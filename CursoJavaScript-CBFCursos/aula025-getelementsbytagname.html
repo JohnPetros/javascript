@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <script></script>
+  </head>
+  <body>
+
+    <h2>CFB Cursos</h2>
+    <p>CFB de JavaScript</p>
+    <h2>Aula 25</h2>
+    <p>www.youtube.com/cfbcursos</p>
+    <h2>cfbcursos.com.br</h2>
+
+    <hr>
+
+    <script>
+
+     var tagsP = document.getElementsByTagName('*')
+
+     for(var i = 0; i < tagsP.length; i++){
+        tagsP[i].style.color = 'red'
+     }
+
+     tagsP[10].style.color = 'blue'
+     tagsP[10].innerHTML = 'Novo Texto'
+    
+    </script>
+   
+  </body>
+</html>
