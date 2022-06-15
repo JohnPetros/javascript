@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+  </head>
+  <body>
+    <script>
+
+        var numeros = new Array(10, 2, 5, 30, 25, 19, 20, 50, 40, 150)
+
+        function media(nums) {
+            var tam = nums.length
+            var soma = 0
+            for(var i=0;i<tam;i++){
+                soma += nums[i]
+            }
+            return Math.round(soma / tam)
+        }
+
+        document.write(media(numeros))
+        
+        document.write('<hr>')
+
+        function somaNumeros(n1, n2){
+            return n1 + n2
+        }
+        var res = somaNumeros(3, 7)
+        // document.write(somaNumeros(3, 2))
+        document.write(res)
+
+        document.write('<hr>')
+
+        function soma(n1, n2){
+            var res = n1 + n2
+            document.write(res+'<br>')
+        }
+
+        soma(5, 2)
+        soma(10, 20)
+        soma(0, 1)
+
+        document.write('<hr>')
+
+        function escreve(){
+            document.write('Curso de JavaScript - CFB Cursos <br>')
+        }
+
+        escreve()
+        escreve()
+        escreve() 
+        
+    </script>
+  </body>
+</html>
