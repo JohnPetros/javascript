@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+  </head>
+  <style>
+    div#carro{
+        width: 350px;
+        height: 700px;
+        position: absolute;
+        top: 0;
+        left: 0;
+       
+    }
+    .c1{
+        background-image: url('imgs/c1.png');
+    }
+    .c2{
+        background-image: url('imgs/c2.png');
+    }
+    .c3{
+        background-image: url('imgs/c3.png');
+    }
+  </style>
+   <script>
+
+    var dx, dy, px, py, vel, obj, tmp
+
+    function trocaCarro(c){
+       obj = document.getElementById('carro')
+       if (c == 1) {
+        obj.setAttribute('class', 'c1')
+       } else if(c == 2) {
+        obj.setAttribute('class', 'c2')
+       } else if(c == 3) {
+        obj.setAttribute('class', 'c3')
+       } 
+    }
+
+    function removerCarro(){
+        document.getElementById('carro').removeAttribute('class')
+    }
+      
+    function verificar(){
+        obj = document.getElementById('carro')
+        if(obj.hasAttribute('class')){
+            alert('Atributo class está na tag')
+        } else {
+            alert('Sem atributo class')
+        }
+    }
+
+    function move(){
+            dx, dy, px, py = 0
+            vel = 10
+            obj = document.getElementById('carro')
+            document.addEventListener('keydown', teclaDw)
+            document.addEventListener('keyup', teclaUp)
+            tmp = setInterval(enterFrame, 30)
+        }
+
+        function teclaDw(){
+            var tecla = event.keyCode
+            if(tecla == 37){
+                dx = -1
+            } else if(tecla == 38){
+                dy = -1
+            } else if(tecla == 39){
+                dx = 1
+            } else if(tecla == 40){
+                dy = 1
+            }
+        }
+
+        function teclaUp(){
+            var tecla = event.keyCode
+            if(tecla == 37){
+                dx = 0
+            } else if(tecla == 38){
+                dy = 0
+            } else if(tecla == 39){
+                dx = 0
+            } else if(tecla == 40){
+                dy = 0
+            }
+        }
+
+        function enterFrame(){
+            px += dx * vel
+            py += dy * vel
+            obj = document.getElementById('carro')
+            obj.style.left = px + 'px'
+            obj.style.top = py + 'px'
+        }
+
+        window.addEventListener('load', move)
+  </script>
+  <body>
+
+    <button onclick="trocaCarro(1)">Carro 1</button>
+    <button onclick="trocaCarro(2)">Carro 2</button>
+    <button onclick="trocaCarro(3)">Carro 3</button>
+    <button onclick="removerCarro()">Remover Carro</button>
+    <button onclick="verificar()">Verificar</button>
+    <div id="carro"></div>
