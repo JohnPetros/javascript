@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+  </head>
+  <style>
+  </style>
+ 
+  <body>
+
+   <p id="txt">CFB Cursos - Curso de JavaScript - Curso aula 46 do curso de JavaScript</p>
+
+   <script>
+
+    var texto = document.getElementById('txt').innerHTML
+
+    // var res = texto.match(/o/ig)
+
+    // var res = texto.match(/[oa]/ig)
+
+    // var res = texto.match(/[^oa]/ig)
+
+    // var res = texto.match(/[a-g]/ig)
+    
+    // var res = texto.match(/[^a-g]/ig)
+
+    // var res = texto.match(/[a|o|e]/ig)
+
+    // var res = texto.match(/[\d]/ig)
+
+    // var res = texto.match(/[\D]/ig)
+
+    var res = texto.match(/[\w]/ig)
+    
+    document.write(res + ': ' + res.length + '<br>')
+
+    document.write(res[3])
+    
+   
+   </script>
+
+  </body>
+</html>
