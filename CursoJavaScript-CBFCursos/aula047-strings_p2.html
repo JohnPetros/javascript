@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+  </head>
+  <style>
+  </style>
+ 
+  <body>
+
+   <p id="txt">CFB Cursos - Curso de JavaScript</p>
+
+   <script>
+
+    var texto = document.getElementById('txt').innerHTML
+    var txt2 = ' - aula 47 do curso de JavaScript'
+    var txt3 = '. Sério, é muito bom mesmo!'
+
+
+    // var res = texto.search(/curso/i)
+
+    // var res = texto.replace(/curso/ig, 'aula')
+
+    // var res = texto.charAt(11)
+
+    // var res = texto.charCodeAt(0)
+    // document.write(String.fromCharCode(res))
+
+    var res = texto.concat(txt2 + '. Muito bom este curso' + txt3)
+    
+    document.write(res)
+    
+
+    
+    
+   
+   </script>
+
+  </body>
+</html>
