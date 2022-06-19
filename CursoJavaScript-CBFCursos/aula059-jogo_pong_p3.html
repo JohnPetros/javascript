@@ -61,8 +61,8 @@
 
         //Posições
         var posBolaX, posBolaY
-        var posJogadorX, posJogadorY
-        var posCpuX, posCpuY
+        var posJogadorX=10, posJogadorY
+        var posCpuX=930, posCpuY
 
         //Direção de acordo com a tecla utilizada
         var dirJogY
@@ -89,9 +89,46 @@
         function controlarJog(){
             if(jogo){
                 posJogadorY += velJogador * dirJogY
-                vjogador.style.top = posJogadorY + 'px'
-            
+                if(
+                    ((posJogadorY + barraH) >= campoH) 
+                                 ||
+                    ((posJogadorY) <= 0)
+                )             
+                {
+                    posJogadorY += (velJogador * dirJogY) * -1
+                }
+                vjogador.style.top = posJogadorY + 'px'         
             }
+        }
+
+        function controlarBola(){
+            //Movimentação da bola
+            posBolaX += velBola * bolaX
+            posBolaY += velBola * bolaY
+
+            //Colisão com jogador
+            if(
+                (posBolaX <= posJogadorX + barraW)&&
+                ((posBolaY + bolaH >= posJogadorY)&&(posBolaY <= posJogadorY + barraH))
+            )
+            {
+                bolaY = (((posBolaY+(bolaH/2)) - (posJogadorY+(barraH/2))) / 16)
+                bolaX *= -1
+              
+            } 
+
+             //Colisão com CPU
+             if(
+                (posBolaX >= posCpuX - barraW)&&
+                ((posBolaY + bolaH >= posCpuY)&&(posBolaY <= posCpuY + barraH))
+            )
+            {
+                bolaY = (((posBolaY+(bolaH/2)) - (posCpuY+(barraH/2))) / 16)
+                bolaX *= -1
+            }
+
+            vbola.style.left = posBolaX + 'px'
+            vbola.style.top = posBolaY + 'px'
         }
 
         function teclaDw(){
@@ -99,7 +136,7 @@
             if(tecla==38){//CIMA
                 dirJogY = -1
             } else if(tecla==40){//BAIXO
-                dirJogY = 1
+                dirJogY = +1
             }
         }
         
@@ -116,6 +153,7 @@
         function game(){
             if(jogo){
                 controlarJog()
+                controlarBola()
 
             }
             frame = requestAnimationFrame(game)
@@ -126,9 +164,15 @@
                 cancelAnimationFrame(frame)
                 jogo = true
                 dirJogY = 0
+                bolaY = 0
+                if((Math.round(Math.random()*10)) < 5){
+                    bolaX = -1
+                } else {
+                    bolaX = 1
+                }
                 posBolaX = posBolaIniX
                 posBolaY = posBolaIniY
-                posJogadorY = 0
+                posJogadorY = posJogIniY
                 posCpuY = posCpuIniY
                 game()
             }
