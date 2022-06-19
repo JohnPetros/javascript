@@ -84,6 +84,70 @@
         //Controle
         var pontos = 0
         var tecla
+        var jogo = false
+
+        function controlarJog(){
+            if(jogo){
+                posJogadorY += velJogador * dirJogY
+                vjogador.style.top = posJogadorY + 'px'
+            
+            }
+        }
+
+        function teclaDw(){
+            tecla = event.keycode
+            if(tecla==38){//CIMA
+                dirJogY = -1
+            } else if(tecla==40){//BAIXO
+                dirJogY = 1
+            }
+        }
+        
+        function teclaUp(){
+            tecla = event.keycode
+            if(tecla==38){//CIMA
+                dirJogY = 0
+            } else if(tecla==40){//BAIXO
+                dirJogY = 0
+            }
+            
+        }
+
+        function game(){
+            if(jogo){
+                controlarJog()
+
+            }
+            frame = requestAnimationFrame(game)
+        }
+
+        function iniciarJogo(){
+            if(!jogo){
+                cancelAnimationFrame(frame)
+                jogo = true
+                dirJogY = 0
+                posBolaX = posBolaIniX
+                posBolaY = posBolaIniY
+                posJogadorY = 0
+                posCpuY = posCpuIniY
+                game()
+            }
+           
+        }
+
+        function inicializar(){
+            velBola = velCpu = velJogador = 8
+            vbtIniciar = document.getElementById('btIniciar')
+            vbtIniciar = addEventListener('click', iniciarJogo)
+            vjogador = document.getElementById('dvJogador')
+            vcpu = document.getElementById('dvCpu')
+            vbola = document.getElementById('dvBola')
+            vpainelTxtPontos = document.getElementById('txtPontos')
+            document.addEventListener('keydown', teclaDw)
+            document.addEventListener('keyup', teclaUp)
+        }
+
+        window.addEventListener('load', inicializar)
 
 
 
