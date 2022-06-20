@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style></style>
+    <script>
+      var painel, btnBack, btnForward, btnGo;
+
+      function historyBack() {
+        window.history.back();
+      }
+
+      function historyForward() {
+        window.history.forward();
+      }
+
+      function historyGo() {
+        // window.history.go(+2);
+        window.history.go(-2);
+      }
+
+      function history(num) {
+        window.history.go(num);
+      }
+
+      function iniciar() {
+        btnBack = document.getElementById("btnBack");
+        btnForward = document.getElementById("btnForward");
+        btnGo = document.getElementById("btnGo");
+
+        btnBack.addEventListener("click", historyBack);
+        btnForward.addEventListener("click", historyForward);
+        btnGo.addEventListener("click", historyGo);
+
+        painel = document.getElementById("info");
+        painel.innerHTML = history.length;
+
+        btnBack.addEventListener("click", function () {
+          history(-1);
+        });
+        btnForward.addEventListener("click", function () {
+          history(1);
+        });
+        btnGo.addEventListener("click", function () {
+          history(-2);
+        });
+      }
+
+      window.addEventListener("load", iniciar);
+    </script>
+  </head>
+  <body>
+    <h1>Página 3</h1>
+    <p id="info"></p>
+
+    <a href="aula067-objeto_history.html">Home</a>
+    <a href="aula067-objeto_history copy.html">Página 2</a>
+    <a href="aula067-objeto_history copy 2.html">Página 3</a>
+    <hr />
+    <button id="btnBack">Voltar</button>
+    <button id="btnForward">Avançar</button>
+    <button id="btnGo">Voltar 2 páginas</button>
+  </body>
+</html>
