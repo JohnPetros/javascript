@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style>
+         #painel{
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 15px;
+            width: 2000px;
+            height: 2000px;
+            background-color: rgb(204, 200, 200);
+        }
+    </style>
+    <script>
+
+        var l, a, px, py, painel
+
+        
+        
+
+        function info(){
+            l = window.innerWidth // innerWidth - Largura Interna da janela outerWidth - Largura interna da janela
+            a = window.innerWidth
+            px = window.screenX
+            py = window.screenY
+            painel.innerHTML = 'Largura: ' + l + ' - Altura: ' + a + '<br>X: ' + px + ' - Y: ' + py
+        }
+
+        function rolar(){
+            window.scrollBy(500, 500)
+        }
+        
+        function iniciar(){
+
+            document.getElementById('btnTam').addEventListener('click', info)
+            document.getElementById('btnPos').addEventListener('click', rolar)
+            painel = document.getElementById('painel')
+        }
+
+        window.addEventListener('load', iniciar)
+
+    </script>
+  </head>
+  <body>
+
+    <button id="btnTam">Tamanho</button>
+    <button id="btnPos">Rolar</button>
+
+    <div id="painel"></div>
+   
+
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style>
+        
+    </style>
+    <script>
+
+        function iniciar(){
+          var qtd = window.length
+          var painel = document.getElementById('painel').innerHTML = qtd
+          for(var i=0; i<qtd; i++){
+            // window.frames[]
+            window.frames[i].location = 'http://cfbcursos.com.br'
+          }
+          // window.frames[0].location = 'http://cfbcursos.com.br'
+        }
+
+        window.addEventListener('load', iniciar)
+
+    </script>
+  </head>
+  <body>
+
+  <iframe src="" frameborder="5"></iframe>
+  <iframe src="" frameborder="5"></iframe>
+  <iframe src="" frameborder="5"></iframe>
+  <iframe src="" frameborder="5"></iframe>
+  <iframe src="" frameborder="5"></iframe>
+
+  <div id="painel"></div>
+   
+
+  </body>
+</html>
