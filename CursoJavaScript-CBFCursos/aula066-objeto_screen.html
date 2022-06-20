@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style>
+        #painel{
+            width: 400px;
+            height: 500px;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
+    <script>
+
+        var painel
+
+        function iniciar(){
+            painel = document.getElementById('painel')
+            painel.innerHTML += 'Largura da Tela: ' + screen.width + 'px<hr>'
+            painel.innerHTML += 'Altura da Tela: ' + screen.height + 'px<hr>'
+            painel.innerHTML += 'Resolução da Tela: ' + screen.width + 'px X ' + screen.height + 'px<hr>' 
+            painel.innerHTML += 'Resolução da Tela Disponível: ' + screen.availWidth + 'px X ' + screen.availHeight + 'px<hr>' 
+            painel.innerHTML += 'Profundidade de cores (para exibir imagens): ' + screen.colorDepth + 'bits<hr>' 
+            painel.innerHTML += 'Resolução da cor da tela (por pixel): ' + screen.pixelDepth + 'bits/pixel' 
+
+        }
+
+        window.addEventListener('load', iniciar)
+
+    </script>
+  </head>
+  <body>
+
+
+  <div id="painel"></div>
+   
+
+  </body>
+</html>
