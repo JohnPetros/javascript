@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style></style>
+    <script>  
+
+        // location.assign('http://www.youtube.com/cfbcursos') // Faz com que a URL colocada como parâmetro seja carregada.
+
+        // location.replace('http://www.youtube.com/cfbcursos') // Faz com que a URL atual da página removida do hisory e substituída pela URL colocada como parâmetro, carregando-a logo em seguida.
+
+        function pagina2(){
+            location.replace('https://www.youtube.com.br')
+        }
+
+        function recarregar(){
+            location.reload() // Recarrega a página.
+        }
+
+
+    </script>
+  </head>
+  <body>
+  
+    <h1>Objeto Location</h1>
+    <button id="btnP2" onclick="pagina2()">Página 2</button>
+    <button id="btnReload" onclick="recarregar()">Recarregar</button>
+
+    
+  </body>
+</html>
