@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style>
+      body{
+        margin: 0;
+        background-color: #aaa;
+      }
+      #dvPainel{
+        display: flex;
+        height: 50px;
+        align-items: center;
+      }
+      .itemPainel{
+        margin: 5px;
+      }
+      #dvJogo{
+        width: 960px;
+        height: 500px;
+        border: 1px solid black;
+        background-color: black;
+      }
+      #dvBola{
+        position: absolute;
+        top: 240px;
+        left: 475px;
+        width: 20px;
+        height: 20px;
+        background-color: #888;
+      }
+      .barra{
+        position: absolute;
+        width: 20px;
+        height: 140px;
+        background-color: #888;
+        top: 180px;
+      }
+      .esquerda{
+        left: 10px;
+      }
+      .direita{
+        left: 10px;
+      }
+      .direita{
+        left: 930px;
+      }
+        
+
+    </style>
+    <script>
+
+        //Elementos
+        var vbtIniciar, vbola, vcpu, vjogador, vpainelTxtPontos
+
+        //Controle de animação
+        var game, frame
+
+        //Posições
+        var posBolaX, posBolaY
+        var posJogadorX=10, posJogadorY
+        var posCpuX=930, posCpuY
+
+        //Direção de acordo com a tecla utilizada
+        var dirJogY
+
+        //Posições iniciais
+        var posJogIniY = 180, posCpuIniY = 180, posBolaIniX = 475, posBolaIniY = 240
+        
+        //Tamanhos
+        var campoX = 0, campoY = 0, campoW = 960, campoH = 500
+        var barraW = 20, barraH = 140, bolaW = 20, bolaH = 20
+
+        //Direção
+        var bolaX, bolaY
+        var jogY = 0, cpuY = 0
+
+        //Velocidade
+        var velBola, velCpu, velJogador
+
+        //Controle
+        var pontos = 0
+        var tecla
+        var jogo = false
+
+        function controlarJog(){
+            if(jogo){
+                posJogadorY += velJogador * dirJogY
+                if(
+                    ((posJogadorY + barraH) >= campoH)||
+                    ((posJogadorY) <= 0)
+                )             
+                {
+                    posJogadorY += (velJogador * dirJogY) * -1
+                }
+                vjogador.style.top = posJogadorY + 'px'         
+            }
+        }
+
+        function controlarCpu(){
+            if(jogo){
+                if(
+                    (posBolaX > (campoW/2))&&
+                    (bolaX > 0)
+                )
+                {
+                    //Movimentar CPU
+                    if(
+                        ((posBolaY + (bolaH/2)) > ((posCpuY + (barraH/2))) + velCpu)
+                    )
+                    {
+                        //Mover para baixo
+                        
+                        if(
+                            (posCpuY + barraH) <= campoH
+                        )
+                        {
+                            posCpuY += velCpu
+                        }
+                    } else if(
+                        (posBolaY + (bolaH/2)) < (posCpuY + (barraH/2)) - velCpu
+                    )
+                    {
+                        //Mover para cima
+                        if(
+                            posCpuY >= 0
+                        )
+                        {
+                            posCpuY -= velCpu
+                        }
+                    }
+                } else {
+                    //Posicionar CPU no centro
+                    if(
+                        (posCpuY + (barraH/2)) < (campoH/2)
+                    )
+                    {
+                        posCpuY += velCpu
+                    } else  if(
+                        (posCpuY + (barraH/2)) > (campoH/2)
+                    )
+                    {
+                        posCpuY -= velCpu
+                    }
+                }
+                vcpu.style.top = posCpuY + 'px'
+            }
+        }
+
+        function controlarBola(){
+            //Movimentação da bola
+            posBolaX += velBola * bolaX
+            posBolaY += velBola * bolaY
+
+            //Colisão com jogador
+            if(
+                (posBolaX <= posJogadorX + barraW)&&
+                ((posBolaY + bolaH >= posJogadorY)&&(posBolaY <= posJogadorY + barraH))
+            )
+            {
+                bolaY = (((posBolaY+(bolaH/2)) - (posJogadorY+(barraH/2))) / 32)
+                bolaX *= -1
+              
+            } 
+
+             //Colisão com CPU
+             if(
+                (posBolaX >= posCpuX - barraW)&&
+                ((posBolaY + bolaH >= posCpuY)&&(posBolaY <= posCpuY + barraH))
+            )
+            {
+                bolaY = (((posBolaY+(bolaH/2)) - (posCpuY+(barraH/2))) / 32)
+                bolaX *= -1
+            }
+
+            //Colisão com limites superior e inferior
+            if((posBolaY >= 480)||(posBolaY <= 0)){
+                bolaY *= -1
+            }
+
+            //Saída pelas laterais
+            if(posBolaX >= (campoW - bolaW)){
+                velBola = 0
+                posBolaX = posBolaIniX
+                posBolaY = posCpuIniY
+                posJogadorY = posJogadorY
+                posCpuY = posCpuIniY
+                pontos++
+                vpainelTxtPontos.value = pontos
+                jogo = false
+                vjogador.style.top = posJogadorY + 'px'  
+                vcpu.style.top = posCpuY + 'px'  
+            } else if(posBolaX <= 0){
+                velBola = 0
+                posBolaX = posBolaIniX
+                posBolaY = posCpuIniY
+                posJogadorY = posJogadorY
+                posCpuY = posCpuIniY
+                pontos--
+                vpainelTxtPontos.value = pontos
+                jogo = false
+                vjogador.style.top = posJogadorY + 'px'  
+                vcpu.style.top = posCpuY + 'px'  
+            }
+
+            vbola.style.left = posBolaX + 'px'
+            vbola.style.top = posBolaY + 'px'
+        }
+
+        function teclaDw(){
+            tecla = event.keyCode
+            if(tecla==38){//CIMA
+                dirJogY = -1
+            } else if(tecla==40){//BAIXO
+                dirJogY = +1
+            }
+        }
+        
+        function teclaUp(){
+            tecla = event.keyCode
+            if(tecla==38){//CIMA
+                dirJogY = 0
+            } else if(tecla==40){//BAIXO
+                dirJogY = 0
+            }
+            
+        }
+
+        function game(){
+            if(jogo){
+                controlarJog()
+                controlarBola()
+                controlarCpu()
+
+            }
+            frame = requestAnimationFrame(game)
+        }
+
+        function iniciarJogo(){
+            if(!jogo){
+                velBola = velCpu = velJogador = 8
+                cancelAnimationFrame(frame)
+                jogo = true
+                dirJogY = 0
+                bolaY = 0
+                if((Math.round(Math.random()*10)) < 5){
+                    bolaX = -1
+                } else {
+                    bolaX = 1
+                }
+                posBolaX = posBolaIniX
+                posBolaY = posBolaIniY
+                posJogadorY = posJogIniY
+                posCpuY = posCpuIniY
+                game()
+            }
+           
+        }
+
+        function inicializar(){
+            velBola = velCpu = velJogador = 8
+            vbtIniciar = document.getElementById('btIniciar')
+            vbtIniciar = addEventListener('click', iniciarJogo)
+            vjogador = document.getElementById('dvJogador')
+            vcpu = document.getElementById('dvCpu')
+            vbola = document.getElementById('dvBola')
+            vpainelTxtPontos = document.getElementById('txtPontos')
+            document.addEventListener('keydown', teclaDw)
+            document.addEventListener('keyup', teclaUp)
+        }
+
+        window.addEventListener('load', inicializar)
+
+
+
+     
+    
+    </script>
+  </head>
+  <body>
+
+    <div id="dvJogo">
+        <div id="dvBola"></div>
+        <div id="dvJogador" class="barra esquerda"></div>
+        <div id="dvCpu" class="barra direita"></div>
+    </div>
+    <div id="dvPainel">
+        <div id="itemPainel">
+            <label for="txtPontos">Pontos</label>
+            <input type="text" id="txtPontos" size="10">
+        </div>
+        <div id="itemPainel">
+            <button id="btIniciar">Iniciar</button>
+        </div>
+    </div>
+
+
+  </body>
+</html>
