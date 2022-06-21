@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style></style>
+    <script>
+      var p = document.createElement("p"); // createElement() é um método que cria um elemento HTML
+      //   p.textContent = 'CFB Cursos' // textContent é uma propriedade que define o texto que será inserido no elemento
+      var t = document.createTextNode("Curso de JavaScript - CFB Cursos"); // createTextNode() é um método que define o texto que será inserido no elemento
+
+      function iniciar() {
+        //     p.appendChild(t); // appendChild() é um método qie adiciona o elemento criado no documento HTML
+        // document.body.appendChild(p);
+        document
+          .getElementById("btnAdd")
+          .addEventListener("click", function () {
+            var lista = document.getElementById("listaElementos");
+            var texto = document.getElementById("fnovo");
+            var li = document.createElement("li");
+            li.textContent = texto.value;
+            lista.appendChild(li);
+            texto.value = ''
+            texto.focus()
+          });
+      }
+
+      window.addEventListener("load", iniciar);
+    </script>
+  </head>
+  <body>
+    <input type="text" id="fnovo" /><button id="btnAdd">Adicionar</button
+    ><br /><br />
+
+    <ul id="listaElementos"></ul>
+  </body>
+</html>
