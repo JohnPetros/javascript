@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style></style>
+    <script>
+      // Web Storage trata-se de uma área do navegador web onde são armazenados dados
+
+      // LocalStorage é uma categoria do Web Storage onde os dados são guardados na forma de pares de chave-valor e os valores podem ser apenas strings.
+
+      localStorage.setItem("canal", "CFBCursos"); // Adiciona uma chave com seu respectivo valor no localStorage
+      // localStorage.removeItem('canal') // Remove uma chave com seu respectivo valor no localStorage
+
+      if (typeof (Storage) != "underfined") {
+        // var vchave = localStorage.getItem('canal') // Obtém o valor da chave armazenado no localStorage
+        var vchave = localStorage.canal;
+        document.write(vchave + '<hr>');
+      } else {
+        document.write("Sem suporte à Web Storage");
+      }
+
+      if (typeof (Storage) != "underfined") {
+        if (localStorage.visitas) {
+            localStorage.visitas = Number(localStorage.visitas) + 1 
+        } else {
+        // localStorage.setItem("visitas", "1")
+            localStorage.visitas = 1
+        }
+        document.write("Visitas: " + localStorage.visitas);
+      } else {
+        document.write("Sem suporte à Web Storage!");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
