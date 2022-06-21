@@ -6,22 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CBF Cursos - JavaScript</title>
     <style>
+      #fconf{
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid black;
+        background-color: gray;
+        padding: 20px;
+        border-radius: 5px;
+        display: none;
+      }
+
     </style>
     <script>
 
       var vcorf, vcort, vnome
     
-      if (typeof (Storage) != "underfined") {
-        
+      function iniciar(){
+        if (localStorage.nome) {
+        vcorf = localStorage.corf
+        vcort = localStorage.cort
+        vnome = localStorage.nome
+        definirCor(1, vcorf)
+        definirCor(2, vcort)
+        document.getElementById('painel').innerHTML = 'Bem vindo ' + vnome + '<hr>'
       } else {
         document.write("Sem suporte à Web Storage!");
       }
+      }
+     
 
       function gravar(){
         vnome = document.getElementById('fnome').value
         localStorage.corf = vcorf
         localStorage.cort = vcort
         localStorage.nome = vnome
+        var form = document.getElementById('fconf')
+        form.style.display = 'none'
         
       }
 
@@ -34,14 +55,25 @@
           vcort = cor
         }
       }
+
+      function mostraConf(){
+        var form = document.getElementById('fconf')
+        form.style.display = 'block'
+      }
+
+      window.addEventListener('load', iniciar)
+
     </script>
   </head>
   <body>
     <hr><br>
 
     <p>LocalStorage - Curso de JavaScript</p>
-    
-    <form name="dados">
+    <p id="painel"></p>
+
+    <button onclick="mostraConf()">Configurações</button>
+
+    <form name="dados" id="fconf">
       <label for="fnome">Nome</label><br>
       <input type="text" name="fnome" id="fnome" size="20"><br><br>
       <label for="fcorF">Cor fundo:</label><br>
