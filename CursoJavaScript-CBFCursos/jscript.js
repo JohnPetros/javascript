@@ -1,4 +1,7 @@
-var dirYJog, dirXJog
+var dirYJog, dirXJog, jog, velJog, pXJog, pYJog
+var tamTelaW, tamTelaH
+var jogo
+var frame
 
 function teclaDw(){
     var tecla = event.keyCode
@@ -23,12 +26,31 @@ function teclaUp(){
     }
 }
 
-function gameLoop(){
+function controleJogador(){
+    pYJog
+}
 
+function gameLoop(){
+    if(jogo){
+        //Funções de controle
+    }
+    frame = requestAnimationFrame(gameLoop)
 }
 
 function iniciar(){
+    jogo = false
 
+    //inicialização das variáveis da Tela
+    tamTelaH = window.innerHeight
+    tamTelaW = window.innerWidth
+
+    //inicialização das variáveis do Jogador
+    dirXJog = dirYJog = 0
+    pXJog = tamTelaW / 2
+    pYJog = tamTelaH / 2
+    jog = document.getElementById('naveJog')
+    jog.style.top = pYJog + 'px' 
+    jog.style.left = pXJog + 'px' 
 }
 
 window.addEventListener('load', iniciar)
