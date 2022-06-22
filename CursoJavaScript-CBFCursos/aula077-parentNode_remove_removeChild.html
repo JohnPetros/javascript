@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style></style>
+    <script>
+
+
+      function iniciar() {
+        var elementoFilho1 = document.getElementById('p5')
+        alert(elementoFilho1.parentNode.nodeName) // parentNode é a propriedade que retorna o elemento pai de determinado um elemento filho, enquanto o nodeName retorna apenas o nome do elemento filho
+        var elementoFilho2 = document.getElementById('p1')
+        elementoFilho2.remove() // remove() método que remove um elemento
+        document.getElementById('p7').remove()
+        var elementosFilhos = document.getElementById('cfbcursos').childNodes
+        document.getElementById('cfbcursos').removeChild(elementosFilhos[2]) // removeChild() método que remove um elemento filho de um elemento pai
+       
+       
+      }
+
+      window.addEventListener("load", iniciar);
+    </script>
+  </head>
+  <body>
+
+    <div id="cfbcursos">
+        <p id="p1">Curso de JavaScript</p>
+        <p id="p2">Curso de HTML</p>
+        <p id="p3">Curso de CSS3</p>
+        <p id="p4">Curso de PHP/MySQL</p>
+        <p id="p5">Curso de C++</p>
+        <p id="p6">Curso de Photoshop</p>
+        <p id="p7">Curso de Unity/C#</p>
+        <p id="p8">Curso de Flash</p>
+    </div>
+
+  </body>
+</html>
