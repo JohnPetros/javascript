@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style></style>
+    <script>
+
+
+      function iniciar() {
+
+        var novoH = document.createElement('h1')
+        var listaCursos = document.getElementById('cfbcursos')
+        var novoE = document.getElementById('novo')
+        var antigoP = listaCursos.childNodes[9]
+        var txtH = document.createTextNode(novoE.innerHTML)
+        novoH.appendChild(txtH)
+        listaCursos.replaceChild(novoH, antigoP) // replaceChild método que subtitui um elemento por outro
+       
+      }
+
+      window.addEventListener("load", iniciar);
+    </script>
+  </head>
+  <body>
+
+    <div id="novo">Novo Elemento</div>
+    <div id="cfbcursos">
+        <p>Curso de JavaScript</p>
+        <p>Curso de HTML</p>
+        <p>Curso de CSS3</p>
+        <p>Curso de PHP/MySQL</p>
+        <p>Curso de C++</p>
+        <p>Curso de Photoshop</p>
+        <p>Curso de Unity/C#</p>
+        <p>Curso de Flash</p>
+    </div>
+  </body>
+</html>

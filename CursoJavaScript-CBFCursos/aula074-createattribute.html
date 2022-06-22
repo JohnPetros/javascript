@@ -14,11 +14,11 @@
             var num = document.getElementById('fnum').value
             var p = document.getElementsByTagName('p')
             for(var i=0;i<p.length;i++){
-                p[i].removeAttribute('style') // removeAttribute é método que remove um atributo de uma tag
+                p[i].removeAttribute('style') // removeAttribute() é método que remove um atributo de uma tag
             }
-            var at = document.createAttribute('style') // createAttribute() é o método que cria um atributo para uma tag
-            at.value = 'color: red; font-size: 30px'
-            p[num].setAttributeNode(at) // setAttributeNode é o método que adiciona o atributo com seu respectivo valor criado na tag
+            var atrib = document.createAttribute('style') // createAttribute() é o método que cria um atributo para uma tag
+            atrib.value = 'color: red; font-size: 30px'
+            p[num].setAttributeNode(atrib) // setAttributeNode() é o método que adiciona o atributo com seu respectivo valor criado na tag
         })
        
        
