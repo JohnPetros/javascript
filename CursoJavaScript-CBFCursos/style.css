@@ -30,7 +30,7 @@ body{
 #barraPlaneta{
     width: 300px;;
     height: 20px;
-    background-color: white;
+    background-color: #55f;
 }
 
 .tiroJog {
@@ -38,5 +38,12 @@ body{
     height: 6px;
     background-color: black;
     border-radius: 6px;
+    position: absolute;
+}
+
+.bomba{
+    width: 24px;
+    height: 40px;
+    background-image: url(jogo_de_nave/bomba.gif);
     position: absolute;
 }

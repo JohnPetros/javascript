@@ -3,6 +3,8 @@ var velTiro
 var tamTelaW, tamTelaH
 var jogo
 var frame
+var bombas, contBombas, painelContBombas, velBomba, tmpCriarBomba
+var vidaPlaneta
 
 function teclaDw(){
     var tecla = event.keyCode
@@ -25,6 +27,38 @@ function teclaUp(){
         dirXJog = 0
     } else if((tecla==38)||(tecla=40)){//Cima e Baixo
         dirYJog = 0
+    }
+}
+
+function criarBomba(){
+    if(jogo){
+        var y = 0
+        var x = Math.random() * tamTelaW
+        var bomba = document.createElement('div')
+        var atrib1 = document.createAttribute('class')
+        var atrib2 = document.createAttribute('style')
+        atrib1.value = 'bomba'
+        atrib2.value = 'top:' + y + 'px; left:' + x + 'px'
+        bomba.setAttributeNode(atrib1)
+        bomba.setAttributeNode(atrib2)
+        document.body.appendChild(bomba)
+        contBombas--
+    }
+}
+
+function controleBomba(){
+    bombas = document.getElementsByClassName('bomba')
+    var qtdBombas = bombas.length
+    for(var i=0; i<qtdBombas; i++){
+        if(bombas[i]){
+            var pBomba = bombas[i].offsetTop
+            pBomba += velBomba
+            bombas[i].style.top = pBomba + 'px'
+            if(pBomba > tamTelaH){
+                vidaPlaneta -= 10
+                bombas[i].remove()
+            }
+        }
     }
 }
 
@@ -67,6 +101,7 @@ function gameLoop(){
         //Funções de controle
         controleJogador()
         controleTiros()
+        controleBomba()
     }
     frame = requestAnimationFrame(gameLoop)
 }
@@ -74,11 +109,11 @@ function gameLoop(){
 function iniciar(){
     jogo = true
 
-    //inicialização das variáveis da Tela
+    //Inicialização das variáveis da Tela
     tamTelaH = window.innerHeight
     tamTelaW = window.innerWidth
 
-    //inicialização das variáveis do Jogador
+    //Inicialização das variáveis do Jogador
     dirXJog = dirYJog = 0
     pXJog = tamTelaW / 2
     pYJog = tamTelaH / 2
@@ -86,6 +121,15 @@ function iniciar(){
     jog = document.getElementById('naveJog')
     jog.style.top = pYJog + 'px' 
     jog.style.left = pXJog + 'px' 
+
+    //Controle das Bombas
+    clearInterval(tmpCriarBomba)
+    contBombas = 150
+    velBomba = 3
+    tmpCriarBomba = setInterval(criarBomba, 1700)
+
+    //Controle do Planeta
+    vidaPlaneta = 300
 
     gameLoop()
 }
