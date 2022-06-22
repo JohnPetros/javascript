@@ -81,10 +81,34 @@ function controleTiros(){
             var postiro = tiros[i].offsetTop
             postiro -= velTiro
             tiros[i].style.top = postiro + 'px'
+            colisaoTiroBomba(tiros[i])
             if(postiro < 0){
                 //tiros[i].remove()
                 document.body.removeChild(tiros[i])
             }
+        }
+    }
+}
+
+function colisaoTiroBomba(tiro){
+    var qtdBombas = bombas.length 
+    for(var i=0; i<qtdBombas; i++){
+        if(bombas[i]){
+           if(
+                (
+                    (tiro.offsetTop <= (bombas[i].offsetTop+40))&& //Colisão da parte de cima do tiro com a parte de baixo da bomba
+                    ((tiro.offsetTop+6) >= (bombas[i].offsetTop)) //Colisão da parte de baixo do tiro com a parte de cima da bomba
+                )
+                &&
+                (
+                    (tiro.offsetLeft <= (bombas[i].offsetLeft+24))&& //Colisão da parte esquerda do tiro com a parte direita da bomba
+                    ((tiro.offsetLeft+6) >= (bombas[i].offsetLeft)) //Colisão da parte direita do tiro com a parte esquerda da bomba
+                )
+           )
+           {
+                bombas[i].remove()
+                tiro.remove()
+           } 
         }
     }
 }
