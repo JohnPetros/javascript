@@ -1,4 +1,5 @@
 var dirYJog, dirXJog, jog, velJog, pXJog, pYJog
+var velTiro
 var tamTelaW, tamTelaH
 var jogo
 var frame
@@ -38,6 +39,22 @@ function atirar(x, y){
     document.body.appendChild(tiro)
 }
 
+function controleTiros(){
+    var tiros = document.getElementsByClassName('tiroJog')
+    var tam = tiros.length
+    for(var i=0; i<tam; i++){
+        if(tiros[i]){
+            var postiro = tiros[i].offsetTop
+            postiro -= velTiro
+            tiros[i].style.top = postiro + 'px'
+            if(postiro < 0){
+                //tiros[i].remove()
+                document.body.removeChild(tiros[i])
+            }
+        }
+    }
+}
+
 function controleJogador(){
     pYJog += dirYJog * velJog
     pXJog += dirXJog * velJog
@@ -49,6 +66,7 @@ function gameLoop(){
     if(jogo){
         //Funções de controle
         controleJogador()
+        controleTiros()
     }
     frame = requestAnimationFrame(gameLoop)
 }
@@ -64,7 +82,7 @@ function iniciar(){
     dirXJog = dirYJog = 0
     pXJog = tamTelaW / 2
     pYJog = tamTelaH / 2
-    velJog = 5
+    velJog = velTiro = 5
     jog = document.getElementById('naveJog')
     jog.style.top = pYJog + 'px' 
     jog.style.left = pXJog + 'px' 
