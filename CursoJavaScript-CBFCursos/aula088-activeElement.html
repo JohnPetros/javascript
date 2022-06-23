@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+
+        var divCx//, frame
+
+        // function loop(){
+        //     divCx.innerHTML = document.activeElement
+        //     frame = requestAnimationFrame(loop)
+        // }
+
+        // function ativo(){
+
+        //     var elemento = document.activeElement.tagName // activeElement é uma propriedade que se associa a um elemento que está ativo na página // tagName é a a propriedade que retorna o nome de um elemento 
+        //     console.log(elemento)
+        //     loop()
+        // }
+
+        function ativo(){
+            var cx = document.getElementById('texto_selecionado')
+            var elemento = document.activeElement
+            var selecao = elemento.value.substring(elemento.selectionStart, elemento.selectionEnd)
+            cx.innerHTML = selecao
+            // document.getElementById('texto_selecionado').innerHTML = document.activeElement.value.substring(document.activeElement.selectionStart, document.activeElement.selectionEnd) 
+        }
+
+        function iniciar(){
+            var texto = document.getElementById('txt_original') 
+            texto.addEventListener('mouseup', ativo)
+
+
+
+            //divCx = document.getElementById('cx')
+            //loop()
+        }
+
+        window.addEventListener('load', iniciar)
+
+    </script>
+  </head>
+  <body onclick="ativo()">
+
+    <textarea id="txt_original" cols="20" rows="5">CFB Cursos - Curso de JavaScript - Aula 88 - Atributo activeElement</textarea><br>
+    <button>Copiar</button><br>
+    texto Selecionado: <span id="texto_selecionado"></span>
+    
+    
+    
+    
+    <!-- <div id="cx"></div>
+    <input type="text" name="txt">
+    <button>teste</button> -->
+    <!-- <p>CFB Cursos - Curso de JavaScript</p>
+    <img src="https://cfbcursos.com.br/wp-content/uploads/2017/08/LOGO3-CFB-SITE-450x155.png" alt=""> -->
+    
+
+  </body>
+</html>
