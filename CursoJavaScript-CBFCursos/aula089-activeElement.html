@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style>
+      #painel{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.429);
+        display: none;
+      }
+
+
+    </style>
+    <script>
+
+      setInterval(foco, 0)
+
+       function foco(){
+          var res = document.getElementById('simOuNao')
+          var painel = document.getElementById('painel')
+          if(document.hasFocus()){ // hasFocus() método que retorna se a página está em foco ou não, retornando true ou false
+            res.innerHTML = ''
+            painel.style.display = 'none'
+          } else {
+            res.innerHTML = '>> NÃO <<'
+            painel.style.display = 'block'
+          }
+       }
+
+    </script>
+  </head>
+  <body>
+
+
+    <div id="painel"></div>
+    <div id="divMsg">Página <span id="simOuNao"></span>está em foco</div>
+    <img src="https://cfbcursos.com.br/wp-content/uploads/2017/08/LOGO3-CFB-SITE-450x155.png" alt="">
+
+  </body>
+</html>
