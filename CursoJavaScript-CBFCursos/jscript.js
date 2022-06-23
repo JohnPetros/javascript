@@ -4,8 +4,9 @@ var tamTelaW, tamTelaH
 var jogo
 var frame
 var bombas, contBombas, painelContBombas, velBomba, tmpCriarBomba
-var vidaPlaneta
+var vidaPlaneta, barraPlaneta
 var indiceExplosao, indiceSom
+var telaMsg
 
 function teclaDw(){
     var tecla = event.keyCode
@@ -93,8 +94,8 @@ function controleTiros(){
 }
 
 function criarExplosao(tipo, x, y){//Tipo de explosão: 1 = Ar, 2 = Chão
-    if(document.getElementById('explosao' + (indiceExplosao-3))){
-        document.getElementById('explosao' + (indiceExplosao-3)).remove()
+    if(document.getElementById('explosao' + (indiceExplosao-4))){
+        document.getElementById('explosao' + (indiceExplosao-4)).remove()
     }
     var explosao = document.createElement('div')
     var img = document.createElement('img')
@@ -160,6 +161,22 @@ function colisaoTiroBomba(tiro){
     }
 }
 
+function gerenciarGame(){
+    barraPlaneta.style.width = vidaPlaneta + 'px'
+    if(contBombas <= 0){
+        jogo = false
+        clearInterval(tmpCriarBomba)
+        telaMsg.style.backgroundImage = 'url(jogo_de_nave/vitoria.jpg)'
+        telaMsg.style.display = 'block'
+    }
+    if(vidaPlaneta<=0){
+        jogo = false
+        clearInterval(tmpCriarBomba)
+        telaMsg.style.backgroundImage = 'url(jogo_de_nave/derrota.jpg)'
+        telaMsg.style.display = 'block'
+    }
+}
+
 function controleJogador(){
     pYJog += dirYJog * velJog
     pXJog += dirXJog * velJog
@@ -174,6 +191,7 @@ function gameLoop(){
         controleTiros()
         controleBomba()
     }
+    gerenciarGame()
     frame = requestAnimationFrame(gameLoop)
 }
 
@@ -195,15 +213,20 @@ function iniciar(){
 
     //Controle das Bombas
     clearInterval(tmpCriarBomba)
-    contBombas = 150
+    contBombas = 3
     velBomba = 3
     tmpCriarBomba = setInterval(criarBomba, 1700)
 
     //Controle do Planeta
     vidaPlaneta = 300
+    barraPlaneta = document.getElementById('barraPlaneta')
+    barraPlaneta.style.width = vidaPlaneta + 'px'
 
     //Controle das Explosões
     indiceExplosao = indiceSom = 0
+
+    //Controle de Telas
+    telaMsg = document.getElementById('telaMsg')
 
     gameLoop()
 }
