@@ -195,8 +195,32 @@ function gameLoop(){
     frame = requestAnimationFrame(gameLoop)
 }
 
-function iniciar(){
+function reiniciar(){
+    bombas = document.getElementsByClassName('bomba')
+    var qtdBombas = bombas.length
+    for(var i=0;i<qtdBombas;i++){
+        if(bombas[i]){
+            bombas[i].remove()
+        }
+    }
+    telaMsg.style.display = 'none'
+    clearInterval(tmpCriarBomba)
+    cancelAnimationFrame(frame)
+    vidaPlaneta = 300
+    pXJog = tamTelaW/2
+    pYJog = tamTelaH/2
+    jog.style.top = pYJog + 'px'
+    jog.style.left = pXJog + 'px'
+    jog.style.left = pXJog + 'px'
+    contBombas = 150
     jogo = true
+    tmpCriarBomba = setInterval(criarBomba, 1700)
+
+    gameLoop()
+}
+
+function iniciar(){
+    jogo = false
 
     //Inicialização das variáveis da Tela
     tamTelaH = window.innerHeight
@@ -212,7 +236,6 @@ function iniciar(){
     jog.style.left = pXJog + 'px' 
 
     //Controle das Bombas
-    clearInterval(tmpCriarBomba)
     contBombas = 3
     velBomba = 3
     tmpCriarBomba = setInterval(criarBomba, 1700)
@@ -227,8 +250,10 @@ function iniciar(){
 
     //Controle de Telas
     telaMsg = document.getElementById('telaMsg')
+    telaMsg.style.backgroundImage = "url('jogo_de_nave/intro.jpg')"
+    telaMsg.style.display = 'block'
+    document.getElementById('btnJogar').addEventListener('click', reiniciar)
 
-    gameLoop()
 }
 
 window.addEventListener('load', iniciar)
