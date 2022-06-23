@@ -5,6 +5,7 @@ var jogo
 var frame
 var bombas, contBombas, painelContBombas, velBomba, tmpCriarBomba
 var vidaPlaneta
+var indiceExplosao, indiceSom
 
 function teclaDw(){
     var tecla = event.keyCode
@@ -56,6 +57,7 @@ function controleBomba(){
             bombas[i].style.top = pBomba + 'px'
             if(pBomba > tamTelaH){
                 vidaPlaneta -= 10
+                criarExplosao(2, bombas[i].offsetLeft, null)
                 bombas[i].remove()
             }
         }
@@ -90,6 +92,50 @@ function controleTiros(){
     }
 }
 
+function criarExplosao(tipo, x, y){//Tipo de explosão: 1 = Ar, 2 = Chão
+    if(document.getElementById('explosao' + (indiceExplosao-3))){
+        document.getElementById('explosao' + (indiceExplosao-3)).remove()
+    }
+    var explosao = document.createElement('div')
+    var img = document.createElement('img')
+    var som = document.createElement('audio')
+    //Atributos para div
+    var atrib1 = document.createAttribute('class')
+    var atrib2 = document.createAttribute('style')
+    var atrib3 = document.createAttribute('id')
+    //Atributo para imagem
+    var atrib4 = document.createAttribute('src')
+    //Atributos para áudio
+    var atrib5 = document.createAttribute('src')
+    var atrib6 = document.createAttribute('id')
+
+    atrib3.value = 'explosao' + indiceExplosao
+    if(tipo == 1){
+        atrib1.value = 'explosaoAr'
+        atrib2.value = 'top:' + y + 'px; left:' + x + 'px'
+        atrib4.value = 'jogo_de_nave/explosao_ar.gif?' + new Date()
+    } else{
+        atrib1.value = 'explosaoChao'
+        atrib2.value = 'top:' + (tamTelaH-57) + 'px; left:' + (x-17) + 'px'
+        atrib4.value = 'jogo_de_nave/explosao_chao.gif?' + new Date()
+    }
+    atrib5.value = 'jogo_de_nave/exp1.mp3?' + new Date()
+    atrib6.value = 'som' + indiceSom
+    explosao.setAttributeNode(atrib1)
+    explosao.setAttributeNode(atrib2)
+    explosao.setAttributeNode(atrib3)
+    img.setAttributeNode(atrib4)
+    som.setAttributeNode(atrib5)
+    som.setAttributeNode(atrib6)
+    explosao.appendChild(img)
+    explosao.appendChild(som)
+    document.body.appendChild(explosao)
+    document.getElementById('som' + indiceSom).play()
+    indiceExplosao++ 
+    indiceSom++ 
+}
+
+
 function colisaoTiroBomba(tiro){
     var qtdBombas = bombas.length 
     for(var i=0; i<qtdBombas; i++){
@@ -106,6 +152,7 @@ function colisaoTiroBomba(tiro){
                 )
            )
            {
+                criarExplosao(1, bombas[i].offsetLeft-25, bombas[i].offsetTop)
                 bombas[i].remove()
                 tiro.remove()
            } 
@@ -154,6 +201,9 @@ function iniciar(){
 
     //Controle do Planeta
     vidaPlaneta = 300
+
+    //Controle das Explosões
+    indiceExplosao = indiceSom = 0
 
     gameLoop()
 }
