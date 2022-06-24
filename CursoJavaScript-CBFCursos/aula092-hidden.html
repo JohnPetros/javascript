@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style>
+        body{
+            padding: 0;
+        }
+        #menu{
+            border: solid 3px black;
+            border-radius: 10px;
+            padding: 10px;
+            width: 500px;
+            height: 100px;
+            background-color: white;
+        }
+        .menu_item{
+            height: 100%;
+            cursor: pointer;
+        }
+        .carro{
+            width: 250px;
+            margin-bottom: 50px;
+        }
+    </style>
+    <script>
+
+        // function rolar(){
+        //     var carro = document.getElementById('c3').scrollIntoView() // scrollIntoView() método que faz com que página role até um determinado elemento
+        // }
+
+        function sumir(obj){
+            document.getElementById(obj).hidden = true
+        }
+
+        function mostrar(){
+            for(var i=1;i<5;i++){
+                document.getElementById('c'+i).hidden = true
+            }
+            var carro = event.target.dataset.nome
+            document.getElementById(carro).hidden = false
+
+        }
+
+        function iniciar(){
+            for(var i=1;i<5;i++){
+                document.getElementById('c'+i).hidden = true
+            }
+
+            document.getElementById('btnc1').addEventListener('click', mostrar)
+            document.getElementById('btnc2').addEventListener('click', mostrar)
+            document.getElementById('btnc3').addEventListener('click', mostrar)
+            document.getElementById('btnc4').addEventListener('click', mostrar)
+
+           
+            //document.getElementById('c4').hidden = false // hidden propriedade que permite ocultar um elemento ou não utilizando true ou false
+
+        }
+
+        window.addEventListener('load', iniciar)
+
+    </script>
+  </head>
+  <body>
+
+    <div id="menu">
+        <img id="btnc1" data-nome="c1" src="imgs/c1.png" class="menu_item">
+        <img id="btnc2" data-nome="c2" src="imgs/c2.png" class="menu_item">
+        <img id="btnc3" data-nome="c3" src="imgs/c3.png" class="menu_item">
+        <img id="btnc4" data-nome="c4" src="imgs/c4.png" class="menu_item">
+    </div>
+    <div>
+        <img id="c1" src="imgs/c1.png" class="carro" onclick="sumir('c1')">
+        <img id="c2" src="imgs/c2.png" class="carro" onclick="sumir('c2')">
+        <img id="c3" src="imgs/c3.png" class="carro" onclick="sumir('c3')">
+        <img id="c4" src="imgs/c4.png" class="carro" onclick="sumir('c4')">
+    </div>
+ 
+
+  </body>
+</html>
