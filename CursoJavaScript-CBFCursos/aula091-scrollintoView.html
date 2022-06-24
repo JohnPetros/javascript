@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CBF Cursos - JavaScript</title>
+    <style>
+        body{
+            padding: 0;
+        }
+        #menu{
+            border: solid 3px black;
+            border-radius: 10px;
+            padding: 10px;
+            width: 500px;
+            height: 100px;
+            position: fixed;
+            top: 10px;
+            left: 400px;
+            background-color: white;
+        }
+        .menu_item{
+            height: 100%;
+            cursor: pointer;
+        }
+        .carro{
+            height: 750px;
+            display: block;
+            margin-bottom: 50px;
+        }
+    </style>
+    <script>
+
+        // function rolar(){
+        //     var carro = document.getElementById('c3').scrollIntoView() // scrollIntoView() método que faz com que página role até um determinado elemento
+        // }
+
+        function rolar(){
+            var carro = event.target.dataset.nome
+            document.getElementById(carro).scrollIntoView()
+
+        }
+
+        function iniciar(){
+            document.getElementById('btnc1').addEventListener('click', rolar)
+            document.getElementById('btnc2').addEventListener('click', rolar)
+            document.getElementById('btnc3').addEventListener('click', rolar)
+            document.getElementById('btnc4').addEventListener('click', rolar)
+        }
+
+        window.addEventListener('load', iniciar)
+
+    </script>
+  </head>
+  <body>
+
+    <div id="menu">
+        <button onclick="rolar()">Rolar</button>
+        <img id="btnc1" data-nome="c1" src="imgs/c1.png" class="menu_item">
+        <img id="btnc2" data-nome="c2" src="imgs/c2.png" class="menu_item">
+        <img id="btnc3" data-nome="c3" src="imgs/c3.png" class="menu_item">
+        <img id="btnc4" data-nome="c4" src="imgs/c4.png" class="menu_item">
+    </div>
+    <div>
+        <img id="c1" src="imgs/c1.png" class="carro">
+        <img id="c2" src="imgs/c2.png" class="carro">
+        <img id="c3" src="imgs/c3.png" class="carro">
+        <img id="c4" src="imgs/c4.png" class="carro">
+    </div>
+ 
+
+  </body>
+</html>
