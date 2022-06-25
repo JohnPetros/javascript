@@ -7,14 +7,14 @@ let produtos = new Map([
     ['04', 'Gabinete']
 ])
 
-// produtos.set('01', 'Mouse') // set é o método que define uma chave e seu valor no objeto Map
+// produtos.set('01', 'Mouse') // set é o método que define pares chave/valor no objeto Map
 //     .set('02', 'Teclado')
 //     .set('03', 'Monitor')
 //     .set('04', 'Gabinete')
 
-produtos.set('01', 'Memória')
+produtos.set('05', 'Memória')
 
-console.log(produtos.size) // Retorna o número de pares chave/valor no objeto Map
+console.log('Tamanho' + produtos.size) // Retorna o número de pares chave/valor no objeto Map
 
 // console.log(produtos.get('01')) // get é o método que retorna o valor associado à chave, ou undefined se não há nenhum valor correspondente
 // console.log(produtos.get('02'))
