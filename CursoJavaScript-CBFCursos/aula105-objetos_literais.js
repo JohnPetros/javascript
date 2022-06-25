@@ -2,11 +2,13 @@
 
 // Cada item dessa "coleção de valores", é chamado de propriedade. Cada propriedade é composta por um par de "nome: valor". Quando uma propriedade armazena uma função, ela se torna o que chamamos de método.
 
+// Para criar um objeto em JS, pode-se utilizar função construtora ou notação literal
+
 const Carro = {
     marca: 'VW',
     modelo: 'Golf',
     info: function(){
-        console.log('Marca: ' + this.marca)
+        console.log('Marca: ' + this.marca) // this é uma palavra-chave que tem o objetivo de fazer referência ao escopo em que está inserido
         console.log('Modelo: ' + this.modelo)
     }
 }
@@ -16,7 +18,7 @@ const Carro = {
 // console.log(Carro.['marca'])
 // console.log(Carro.['modelo'])
 
-const c2 = Object.create(Carro)
+const c2 = Object.create(Carro) // create é uma propriedade da classe Object que permite criar um objeto
 const c3 = Object.create(Carro)
 
 Carro.marca = 'Honda'
@@ -51,9 +53,9 @@ const Características = {
     câmbio: 'Automático'
 }
 
-delete Características.cor
+delete Características.cor // delete é o operador que permite deletar propriedades ou métodos de objetos
 
-const Automóvel = Object.assign(Veiculo, Características)
+const Automóvel = Object.assign(Veiculo, Características) // assign é uma propriedade da classe Object que permite mesclar dois objetos ou mais
 
 console.log(Automóvel)
 Automóvel.info()
