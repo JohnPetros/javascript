@@ -15,6 +15,7 @@ const produtos = [
 
 const p = [...produtos]
 
+console.log(produtos)
 console.log(p)
 
 const n1 = [100, 200, 300]
