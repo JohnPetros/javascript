@@ -8,7 +8,7 @@ const Carro = {
     marca: 'VW',
     modelo: 'Golf',
     info: function(){
-        console.log('Marca: ' + this.marca) // this é uma palavra-chave que tem o objetivo de fazer referência ao escopo em que está inserido
+        console.log('Marca: ' + this.marca) // this é uma palavra-chave que permite fazer referência ao escopo em que está inserido
         console.log('Modelo: ' + this.modelo)
     }
 }
