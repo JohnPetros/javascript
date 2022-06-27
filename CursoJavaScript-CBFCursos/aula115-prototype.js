@@ -1,4 +1,6 @@
-// Herança é um conceito da POO em que uma classe consegue herdar comportamentos e características de outra classe
+// Prototype é uma propiedade que está contido em todo objeto JavaScript. Usando prototype é possível criar ou sobrescrever propriedades e métodos de objetos e classes.
+
+// Object.prototype
 
 class Carro{
     static alerta = true
@@ -13,9 +15,9 @@ class Carro{
         console.log('Ligado..........................: ' + (this.ligado ? 'Sim' : 'Não'))
         console.log('Tipo de Combustível.............: ' + this.tipoComb)
         if(this.tipoCarro == 1){
-            console.log('Tipo de Carro...............: Passeio')
+            console.log('Tipo de Carro...................: Passeio')
         } else if(this.tipoCarro == 2){
-            console.log('Tipo de Carro............: Transporte')
+            console.log('Tipo de Carro...................: Transporte')
         } else{
             console.log('Tipo de Carro...................: Combate')
         } 
@@ -27,7 +29,7 @@ class Carro{
         return this.ligado
     }
 
-    set combustível(c){ // Usa-se a sintaxe SET para determinar que o método em questão é do tipo SETTER
+    set combustível(c){
         if(c < 0 || c > 100){
             console.log('Valor de combustível inválido')
         } else {
@@ -35,23 +37,23 @@ class Carro{
             console.log('Combustível alterado. Valor atual: ' + this.comb+'%')
         }
     }
-    get combustível(){ // Usa-se a sintaxe GET para determinar que o método em questão é do tipo GETTER
+    get combustível(){ 
         return this.tpComb
     }
 }
 
-class CarroCombate extends Carro { // A palavra chave EXTENDS é usada para com que classe filha herde as características da classe pai.
+class CarroCombate extends Carro {
     constructor(potTiro){
-        super(3, 2) // A palavra-chave SUPER é usada para acessar o construtor ou outro método da classe pai
+        super(3, 2)
         this.munição = 1000
         this.potênciaTiro = potTiro
         this.blindagem = 100
     }
     info(){
         super.info()
-        console.log('Quantidade de Munição..........: ' + this.munição)
-        console.log('Potência do Tiro...............: ' + this.potTiro)
-        console.log('Blindagem......................: ' + this.blindagem)
+        console.log('Quantidade de Munição...........: ' + this.munição)
+        console.log('Potência do Tiro................: ' + this.potTiro)
+        console.log('Blindagem.......................: ' + this.blindagem)
         console.log('.........................................\n')
     }
 }
@@ -62,9 +64,24 @@ class CarroTransporte extends Carro {
     }
 }
 
+Carro.prototype.potência = 500
+Carro.prototype.velocidade = 0
+Carro.prototype.velocidadeMáxima = 0
+
+Carro.prototype.info2 = function(){
+    console.log('Potência........................: ' + this.munição)
+    console.log('Velocidade......................: ' + this.potTiro)
+    console.log('Velocidade Máxima...............: ' + this.blindagem)
+}
+
 let carro1 = new CarroCombate(100)
 carro1.setLigado = true
+console.log('potência: ' + carro1.potência+'hp')
 carro1.info()
+carro1.info2()
+
 
 let carro2 = new CarroTransporte()
+console.log('potência: ' + carro2.potência+'hp')
 carro2.info()
+carro2.info2()
