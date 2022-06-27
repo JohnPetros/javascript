@@ -1,8 +1,8 @@
 // Objetos são como uma espécie de "super variáveis" que armazenam uma "coleção de valores" referenciados por nome, e que podem ser recuperados para serem utilizados em diversas outras partes de um programa
 
-// Cada item dessa "coleção de valores", é chamado de propriedade. Cada propriedade é composta por um par de "nome: valor". Quando uma propriedade armazena uma função, ela se torna o que chamamos de método.
+// Cada item dessa "coleção de valores", é chamado de propriedade. Cada propriedade é composta por um par de "chave: valor". Quando uma propriedade armazena uma função, ela se torna o que chamamos de método.
 
-// Para criar um objeto em JS, pode-se utilizar função construtora ou notação literal
+// Para criar um objeto em JavaScript, pode-se utilizar função construtora ou notação literal
 
 const Carro = {
     marca: 'VW',
@@ -53,7 +53,7 @@ const Características = {
     câmbio: 'Automático'
 }
 
-delete Características.cor // delete é o operador que permite deletar propriedades ou métodos de objetos
+delete Características.cor // delete é a palavra-chave que permite deletar propriedades ou métodos de objetos
 
 const Automóvel = Object.assign(Veiculo, Características) // assign é uma propriedade da classe Object que permite mesclar dois objetos ou mais
 
