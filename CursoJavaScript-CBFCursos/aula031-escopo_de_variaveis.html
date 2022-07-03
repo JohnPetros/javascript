@@ -9,6 +9,52 @@
   <body>
     <script>
 
+      /* 
+      
+      O escopo determina a acessibilidade (visibilidade) das variáveis.
+
+      JavaScript tem 3 tipos de escopo:
+
+      Escopo do bloco
+      Escopo da função
+      Âmbito global
+
+        Escopo do Bloco
+            Antes do ES6 (2015), JavaScript tinha apenas Escopo Global e Escopo de Função .
+
+            O ES6 introduziu duas novas palavras-chave JavaScript importantes: let e const.
+
+            Essas duas palavras-chave fornecem Block Scope em JavaScript.
+
+            Variáveis ​​declaradas dentro de um bloco {} não podem ser acessadas de fora do bloco:
+
+        Escopo Local
+            Variáveis ​​declaradas dentro de uma função JavaScript tornam-se LOCAL para a função.
+
+            As variáveis ​​locais têm o escopo da função:
+
+            Eles só podem ser acessados ​​de dentro da função.
+
+            Como as variáveis ​​locais são reconhecidas apenas dentro de suas funções, variáveis ​​com o mesmo nome podem ser usadas em funções diferentes.
+
+            As variáveis ​​locais são criadas quando uma função é iniciada e excluídas quando a função é concluída.
+
+          Escopo da Função
+            JavaScript tem escopo de função: cada função cria um novo escopo.
+
+            Variáveis ​​definidas dentro de uma função não são acessíveis (visíveis) de fora da função.
+
+            Variáveis ​​declaradas com var, let e const são bastante semelhantes quando declaradas dentro de uma função.
+
+  
+          Variáveis ​​JavaScript globais
+            Uma variável declarada fora de uma função torna-se GLOBAL.
+
+            Uma variável global tem Escopo Global :
+
+            Todos os scripts e funções em uma página da Web podem acessá-la.   
+      */
+
         var nomeCor = 'Vermelho'
         var i = 0
 

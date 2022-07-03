@@ -7,6 +7,50 @@
     <title>CBF Cursos - JavaScript</title>
     <script>
 
+        // Variáveis ​​são contêineres para armazenar dados (armazenando valores de dados).
+
+        // Neste exemplo, as variáveis são declaradas com a varpalavra-chave:
+
+        /* 
+        
+        Todas as variáveis ​​JavaScript devem ser identificadas com nomes exclusivos .
+
+            Esses nomes exclusivos são chamados de identificadores .
+
+            Os identificadores podem ser nomes curtos (como x e y) ou nomes mais descritivos (idade, soma, volume total).
+
+            As regras gerais para construir nomes para variáveis ​​(identificadores exclusivos) são:
+
+            Os nomes podem conter letras, dígitos, sublinhados e cifrões.
+            Os nomes devem começar com uma letra
+            Os nomes também podem começar com $ e _ (mas não o usaremos neste tutorial)
+            Os nomes diferenciam maiúsculas de minúsculas (y e Y são variáveis ​​diferentes)
+            Palavras reservadas (como palavras-chave JavaScript) não podem ser usadas como nomes
+
+            Observação: Os identificadores JavaScript diferenciam maiúsculas de minúsculas.
+
+        Em JavaScript, o sinal de igual ( =) é um operador de "atribuição", não um operador "igual a".
+
+            O operador "igual a" é escrito como ==em JavaScript.
+
+        
+        Tipos de dados JavaScript
+            As variáveis ​​JavaScript podem conter números como 100 e valores de texto como "John Doe".
+
+            Na programação, os valores de texto são chamados de strings de texto.
+
+            JavaScript pode lidar com muitos tipos de dados, mas por enquanto, pense apenas em números e strings.
+
+            Strings são escritas entre aspas duplas ou simples. Os números são escritos sem aspas.
+
+            Se você colocar um número entre aspas, ele será tratado como uma string de texto.
+
+            Em programas de computador, as variáveis ​​geralmente são declaradas sem valor. O valor pode ser algo que precisa ser calculado ou algo que será fornecido posteriormente, como entrada do usuário.
+
+            Uma variável declarada sem valor terá o valor undefined.
+
+        */
+
         var canal = "CBF Cursos"
         var ano = 2017
         var num = 10
@@ -17,7 +61,76 @@
 
         curso = 'Programação'
         
-        document.write(texto)
+        document.write(texto + '<br>')
+
+
+        /* 
+        
+        Em JavaScript existem 5 tipos de dados diferentes que podem conter valores:
+
+            .string
+            .number
+            .boolean
+            .object
+            .function
+
+        Existem 6 tipos de objetos:
+
+            .Object
+            .Date
+            .Array
+            .String
+            .Number
+            .Boolean
+
+        E 2 tipos de dados que não podem conter valores:
+
+            .null
+            .undefined
+
+        Observação:
+        O tipo de dados de NaN (Not a Number) é número
+        O tipo de dados de uma matriz é objeto
+        O tipo de dados de uma data é objeto
+        O tipo de dados de null é objeto
+        O tipo de dados de uma variável undefined é undefined
+        O tipo de dados de uma variável que não recebeu um valor também é undefined
+
+        Dados primitivos
+            Um valor de dados primitivo é um único valor de dados simples sem propriedades e métodos adicionais.
+
+            O operador typeof pode retornar um destes tipos primitivos:
+            string
+            number
+            boolean
+            undefined
+        
+        Dados Complexos
+            O operador typeof pode retornar um dos dois tipos complexos:
+            function
+            object
+
+            O operador typeof retorna "objeto" para objetos, arrays e null.
+            O operador typeof não retorna "objeto" para funções.
+        
+        */
+
+        document.write(typeof texto) // Pode-se usar o operador typeof para identificar o tipo de dado de uma variável JavaScript.
+
+
+        var nome = 'João'
+        var idade = 20
+
+        // Os Template Literals fornecem uma maneira fácil de interpolar variáveis ​​e expressões em strings.
+
+        // Os Template Literals usam acentos graves (``) em vez das aspas ("") para definir uma string:
+
+        // O método é chamado de interpolação de string. A sintaxe é: ${...}
+
+
+        document.write(`O ${nome} tem ${idade} anos.`)
+
+
 
     </script>
 </head>
