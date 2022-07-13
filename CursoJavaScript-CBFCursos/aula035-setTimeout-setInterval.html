@@ -26,8 +26,32 @@
 
    var tpm
 
+   //O setTimeout()método chama uma função após alguns milissegundos.
+  // 1 segundo = 1000 milissegundos.
+
+  /*  
+  
+  O setTimeout()é executado apenas uma vez.
+
+  Se você precisar de execuções repetidas, use setInterval()em vez disso.
+
+  Use o clearTimeout()método para impedir que a função seja iniciada.
+
+  Para limpar um tempo limite, usa-se o objeto retornado de setTimeout(), podendo parar a execução chamando clearTimeout():
+  
+  */
+
     //    var tmp = setTimeout(mudaCor, 3000)
     //    var tpm = setInterval(mudaCor, 1000)
+
+
+    // O método setInterval() chama uma função em intervalos especificados (em milissegundos).
+    // O método setInterval() continua chamando a função até clearInterval() ser chamado ou a janela ser fechada.
+    // 1 segundo = 1000 milissegundos.
+
+    /* 
+    Para limpar um tempo limite, usa-se o objeto retornado de setInterval(), podendo parar a execução chamando clearInterval():
+    */
 
     function iniciar(){
         tpm = setInterval(mudaCor, 1000)

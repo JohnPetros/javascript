@@ -56,7 +56,8 @@ function somarPositivos(n1, n2){
 
 somarPositivos(10 , 2)
     .then(sucesso => console.log('Sucesso: ' + sucesso))
-    .catch(erro => console.log('Erro: ' + erro))
+    .catch(erro => console.log(erro))
+
 
 function contarPT(num){
     let cont = 0
@@ -78,4 +79,4 @@ function contarPT(num){
 
 contarPT(10)
     .then(sucesso => console.log('Sucesso: ' + sucesso))
-    .catch(erro => console.log('Sucesso: ' + erro))
+    .catch(erro => console.log(erro))

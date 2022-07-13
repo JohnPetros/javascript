@@ -19,4 +19,5 @@
      vidas = 7
  ]
 
+ console.log(jogador)
  console.log(...jogador)

@@ -15,6 +15,79 @@
 
    <script>
 
+    /* 
+    
+      Os métodos de string ajudam a trabalhar com strings.
+
+      Métodos e propriedades de string:
+          Valores primitivos, como "John Doe", não podem ter propriedades ou métodos (porque não são objetos).
+
+          Mas com JavaScript, métodos e propriedades também estão disponíveis para valores primitivos, porque JavaScript trata valores primitivos como objetos ao executar métodos e propriedades.
+    */
+
+    /*
+      Comprimento da String JavaScript:
+          A propriedade length retorna o comprimento de uma string:    
+    */
+    let txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let comprimento = txt.length;
+    document.write(comprimento)
+
+    /*
+      Extraindo Partes de String
+        Existem 3 métodos para extrair uma parte de uma string:
+
+        slice(start, end)
+        substring(start, end)
+        substr(start, length)
+    */
+
+    // SLICE():
+    // slice() extrai uma parte de uma string e retorna a parte extraída em uma nova string.
+    // O método tem 2 parâmetros: a posição inicial e a posição final (final não incluído).
+    let str1 = "Apple, Banana, Kiwi";
+    let part1 = str.slice(7, 13);
+
+    /*
+      Observação
+        JavaScript conta posições a partir de zero.
+        A primeira posição é 0.
+        A segunda posição é 1.
+
+        e um parâmetro for negativo, a posição é contada a partir do final da string.
+    */
+    let str2 = "Apple, Banana, Kiwi";
+    let part2 = str.slice(-12, -6);
+
+    // Se você omitir o segundo parâmetro, o método cortará o resto da string:
+    let part3 = str.slice(7);
+    // ou, contando a partir do final:
+    let part4 = str.slice(-12);
+
+
+    // SUBSTRING():
+    // substr()é semelhante a slice().
+    // A diferença é que o segundo parâmetro especifica o comprimento da parte extraída.
+    let txt2 = "Apple, Banana, Kiwi";
+    let txt2part2 = str.substr(7, 6);
+    // Se você omitir o segundo parâmetro, substr()cortará o resto da string.
+    let txt3 = "Apple, Banana, Kiwi";
+    let txt2part3 = str.substr(7); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     var texto = document.getElementById('txt').innerHTML
 
     // var res = texto.match(/o/ig)

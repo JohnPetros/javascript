@@ -7,17 +7,26 @@
     <title>CBF Cursos - JavaScript</title>
     <script>
 
+      /* 
+      
+      A instrução try permite definir um bloco de código para ser testado para verificar possíveis erros enquanto está sendo executado.
+
+      A instrução catch permite definir um bloco de código a ser executado, caso ocorra um erro no bloco try.
+
+      As instruções try e catch vêm em pares
+      */
+
         var num // Máximo 10
 
      try {
         num = prompt('Digite um valor:')
         if(num>10) {
-            throw new Error('Valor Inválido. O valor máximo é 10')
+            throw new Error('Valor Inválido. O valor máximo é 10') // A instrução throw  permite a criação de um erro personalizado, que no JavaScript leva o nome de excessão (excerption). A exceção pode ser uma string, um número, um Booleano ou um objeto
         }
      } catch(e) {
-        console.log('ERRO ' + e.message)
+        console.log('ERRO ' + e.message) // O objeto error fornece duas propriedades úteis: name e message, sendo que name serve para definr ou retornar o nome do tipo de erro, e message serve para definir ou retornar uma mensagem de erro (uma string)
         num = 10
-     } finally {
+     } finally { // A instrução finally permite executar o código, depois de try e catch, independentemente do resultado:
         document.write('Valor: ' + num)
      }
 

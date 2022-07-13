@@ -1,4 +1,4 @@
-// For in é um estrutura de loop voltada para percorrer matriz
+// For in é um estrutura de loop voltada para percorrer objetos
 
 const aluno = {nome: 'Bruno', sobrenome: 'Campos'}
 const notas = {n1: 80, n2: 75, n3: 92, n4: 85}
@@ -16,7 +16,7 @@ for(var dado in info){
 
 console.log('')
 
-// For of é um estrutura de loop voltada para percorrer vetor
+// For of é um estrutura de loop voltada para percorrer arrays e variáveis do tipo string
 
 let numeros = [100, 8, 75, 30, 64, 47, 98, 81, 60]
 let maiorq60 = 0
