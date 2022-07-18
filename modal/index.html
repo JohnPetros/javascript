@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br"> 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janelinha Modal</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <button>Abre janela modal 1</button>
+    
+    <div class="modal">
+        <header>
+            <h2>Cabeçalho do Modal</h2>
+            <span class="fechar-modal">✕</span>
+        </header>
+        <div class="corpo-modal">
+            <p>Esse é o corpo do Modal</p>
+        </div>
+        <footer><button class="fechar-modal">OK</button></footer>
+    </div>
+
+    <div id="mask"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
