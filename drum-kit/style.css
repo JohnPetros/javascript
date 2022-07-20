@@ -56,11 +56,17 @@ main .container .key {
     color: gold;
     border: solid white 1px;
     cursor: pointer;
+    transition: transform .2s ease-in-out;
 }
 
-main .container .key:hover {
-    border: solid gold 1px;
+main .container .key.active {
+    transform: scale(1.1);
+    border-color: gold;
     color: white;
 
-    box-shadow: 0 0 10px black;
+    box-shadow: 0 0 50px gold;
+}
+
+#containerAudio {
+    display: none;
 }
