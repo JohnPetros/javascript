@@ -4,7 +4,7 @@ const displayDiv = document.getElementById("display");
 const numbers = document.querySelectorAll('[class*=number]');
 const operators = document.querySelectorAll(".operator");
 let newNumber = true;
-let operator;
+let operator, keyOperator;
 let previousNumber;
 let result;
 
@@ -38,6 +38,8 @@ const insertNumber = (event) => display(event.target.textContent);
 
 const selectOperator = (event) => {
   if (!newNumber) {
+    keyOperator = event.target
+    keyOperator.classList.add('active')
     calculate();
     newNumber = true;
     operator = event.target.textContent;
