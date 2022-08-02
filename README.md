@@ -1,2 +1,2 @@
 # javascript
-Este repositório contém meus estudos sobre as linguagens HTML e CSS.
+Este repositório contém meus estudos sobre as linguagem JavaScript
