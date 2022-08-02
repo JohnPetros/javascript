@@ -1,2 +1,2 @@
 # javascript
- Cursos de JavaScript feitos durante minha carreira
+Este repositório contém meus estudos sobre as linguagens HTML e CSS.
