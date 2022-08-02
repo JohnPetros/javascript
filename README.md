@@ -1,2 +1,2 @@
 # javascript
-Este repositório contém meus estudos sobre as linguagem JavaScript
+Este repositório contém meus estudos sobre a linguagem JavaScript
