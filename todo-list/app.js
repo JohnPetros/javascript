@@ -68,6 +68,7 @@ const clickItem = (event) => {
     removeItem(index);
   } else if (element.type === "checkbox") {
     updateItem(index);
+    
   }
 };
 
