@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/css/reset.css" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/scroll.css" />
+    <title>Projeto Mini Portifólio</title>
+  </head>
+  <body>
+    <main class="card">
+      <div class="my-information">
+        <img src="/src/images/foto-perfil.jpg" alt="Foto de perfil" />
+        <h1 class="name">Rodrigo da Silva</h1>
+        <h1 class="role">Desenvoledor Frontend Júnior</h1>
+      </div>
+      <div class="content">
+        <ul class="tabs">
+          <li class="tab selected" id="about-me">
+            <img src="./src/images/sobre.gif" alt="Ícone de sobre mim" />
+          </li>
+          <li class="tab" id="my-social-media">
+            <img src="./src/images/coracao.gif" alt="Ícone de rede sociais" />
+          </li>
+        </ul>
+        <div class="information-tabs">
+          <div class="information selected" id="information-about-me">
+            <h3 class="sub-title">Sobre</h3>
+
+            <div class="description">
+              <p>Oi! meu nome é Rodrigo da Silva, seja bem-vindo(a)!</p>
+              <p>
+                Sou uma pessoa apaixonada pela programação desde que eu tinha 15
+                anos. Sempre tive o sonho de trabalhar com programação e
+                atualmente comecei a colocar em prática, <span>HTML</span>,
+                <span>CSS</span> e <span>JavaScript</span>. Gosto muito café
+                (até demais), e meus principais hobbies são jogar MMO RPG, ver
+                animes séries.
+              </p>
+            </div>
+          </div>
+
+          <div class="information" id="information-my-social-media">
+            <h3 class="sub-title">Minhas redes</h3>
+
+            <ul class="social-media">
+              <li>
+                <a class="curriculum" href="#" target="_blank">Currículo</a>
+              </li>
+              <li >
+                <a class="linkedin" href="#" target="_blank">LinkedIn</a>
+              </li>
+              <li >
+                <a class="github" href="#" target="_blank">Github</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="./src/js/index.js"></script>
+  </body>
+</html>
