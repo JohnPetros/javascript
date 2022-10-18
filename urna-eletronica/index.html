@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Urna eletrônica</title>
+  </head>
+  <body>
+    <main class="urn">
+      <div class="display">
+        <main class="">
+          <div class="left-side">
+            <header>
+              <span>SEU VOTO PARA</span>
+            </header>
+            <div class="role">
+              <span>VEREADOR</span>
+            </div>
+            <div class="fields">
+              <div class="field blink">3</div>
+              <div class="field">8</div>
+            </div>
+            <div class="information">
+              Nome: FULANO DE TAL <br />
+              Partido: QQQ <br />
+              Vice: BELTRANO DE TAL
+            </div>
+          </div>
+          <aside class="right-side">
+            <div class="image">
+              <img
+                src="https://divulgacandcontas.tse.jus.br/candidaturas/oficial/2022/BR/BR/544/candidatos/908966/foto.jpeg"
+              />
+              Presidente
+            </div>
+            <div class="image small">
+              <img
+                src="https://divulgacandcontas.tse.jus.br/candidaturas/oficial/2022/BR/BR/544/candidatos/908900/foto.jpeg"
+              />
+              Vice-Presidente
+            </div>
+          </aside>
+        </main>
+        <footer>
+          Aperte a tela: <br />
+          CONFIRMA para CONFIRMAR este voto <br />
+          CORRIGE para RENICIAR este voto
+        </footer>
+      </div>
+      <div class="keyboard">
+        <div class="keyboard-line">
+          <div class="keyboard-button" onclick="insert('1')">1</div>
+          <div class="keyboard-button" onclick="insert('2')">2</div>
+          <div class="keyboard-button" onclick="insert('3')">3</div>
+        </div>
+        <div class="keyboard-line">
+          <div class="keyboard-button" onclick="insert('4')">4</div>
+          <div class="keyboard-button" onclick="insert('5')">5</div>
+          <div class="keyboard-button" onclick="insert('6')">6</div>
+        </div>
+        <div class="keyboard-line">
+          <div class="keyboard-button" onclick="insert('7')">7</div>
+          <div class="keyboard-button" onclick="insert('8')">8</div>
+          <div class="keyboard-button" onclick="insert('9')">9</div>
+        </div>
+        <div class="keyboard-line">
+          <div class="keyboard-button" onclick="insert('0')">0</div>
+        </div>
+        <div class="keyboard-line">
+          <div class="keyboard-button white" onclick="nullVote()">BRANCO</div>
+          <div class="keyboard-button correct" onclick="correctVote()">CORRIGE</div>
+          <div class="keyboard-button confirm" onclick="confirmVote()">CONFIRMA</div>
+        </div>
+      </div>
+    </main>
+
+    <script src="stages.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
