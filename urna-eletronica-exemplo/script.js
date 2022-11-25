@@ -111,6 +111,7 @@ function confirmVote() {
     })
     console.log("Confirmando como BRANCO...");
   } else if (number.length === stage.fields) {
+    
     votes.push({
         stage: stages[currentStage].title,
         vote: number
