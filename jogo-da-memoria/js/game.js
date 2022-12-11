@@ -36,6 +36,8 @@ const checkEndGame = () => {
 };
 
 const checkCards = () => {
+  console.log({firstCard, secondCard});
+
   const firstCharacter = firstCard.getAttribute("data-character");
   const secondCharacter = secondCard.getAttribute("data-character");
 
