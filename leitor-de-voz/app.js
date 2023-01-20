@@ -34,53 +34,73 @@ const setVoice = (event) => {
   utterance.voice = selectedVoice;
 };
 
-const createExpressionBox = ({ img, text }) => {
-  const div = document.createElement("div");
-  div.classList.add("expression-box");
-  div.innerHTML = `
-    <img src="${img}" alt="${text}">
-    <p class="info">${text}</p>
-  `;
-  div.addEventListener("click", () => {
-    setTextMessage(text);
-    speakText();
-
-    div.classList.add("active");
-    setTimeout(() => {
-      div.classList.remove("active");
-    }, 1000);
-  });
-  main.appendChild(div);
+const addExpressionBoxesIntoDOM = () => {
+  main.innerHTML = humanExpressions
+    .map(
+      ({ img, text }) => `
+  <div class="expression-box" data-text="${text}">
+    <img src="${img}" alt="${text}" data-text="${text}">
+    <p class="info" data-text="${text}">${text}</p>
+  </div>`
+    )
+    .join("");
 };
 
-humanExpressions.forEach(createExpressionBox);
+addExpressionBoxesIntoDOM();
 
-let voices = [];
-speechSynthesis.addEventListener("voiceschanged", () => {
-  voices = speechSynthesis.getVoices();
-  voices.forEach(({ name, lang }) => {
-    const option = document.createElement("option");
+const setStyleOfClickedDiv = (dataValue) => {
+  const div = document.querySelector(`[data-text="${dataValue}"]`);
+  div.classList.add("active");
+  setTimeout(() => {
+    div.classList.remove("active");
+  }, 1000);
+};
 
-    if (googleVoice && option.value === googleVoice.name) {
-      utterance.voice = googleVoice;
-      option.selected = true;
-    } else if (microsoftVoice && option.value === microsoftVoice.name) {
-      utterance.voice = microsoftVoice;
-      option.selected = true;
-    }
+main.addEventListener("click", (event) => {
+  const clickedElement = event.target;
+  const clickedElementText = clickedElement.dataset.text;
+  const mustClickedElementBeSpoken = ["img", "p"].some(
+    (elementName) => clickedElement.tagName === elementName.toUpperCase()
+  );
 
-    option.value = name;
-    option.textContent = `${lang} | ${name}`;
-    selectElement.appendChild(option);
-  });
+  if (mustClickedElementBeSpoken) {
+    setTextMessage(clickedElementText);
+    speakText();
+    setStyleOfClickedDiv(clickedElementText);
+  }
+});
 
+const insertOptionElementsIntoDOM = (voices) => {
+  selectElement.innerHTML = voices.reduce((accumulator, { name, lang }) => {
+    accumulator += `<option value="${name}">${name} | ${lang}</option>`;
+    return accumulator;
+  }, "");
+};
+
+const setPTBRVoices = voices => {
   const googleVoice = voices.find(
     (voice) => voice.name === "Google português do Brasil"
   );
   const microsoftVoice = voices.find(
-    (voice) =>
-      voice.name === "MicrosoftVoice Maria Desktop - Portuguese(Brazil)"
+    (voice) => voice.name === "Microsoft Maria - Portuguese (Brazil)"
   );
+
+  const setUtteranceVoice = voice => {
+    utterance.voice = voice;
+    const voiceOptionElement = selectElement.querySelector(
+      `[value="${googleVoice.name}"]`
+    );
+    voiceOptionElement.selected = true;
+  }
+
+  setUtteranceVoice(googleVoice ? googleVoice : microsoftVoice);
+}
+
+let voices = [];
+speechSynthesis.addEventListener("voiceschanged", () => {
+  voices = speechSynthesis.getVoices();
+  insertOptionElementsIntoDOM(voices)
+  setPTBRVoices(voices)
 });
 
 buttonInsertTect.addEventListener("click", () =>
