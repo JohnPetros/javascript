@@ -56,6 +56,8 @@ const setStyleOfClickedDiv = (dataValue) => {
   }, 1000);
 };
 
+// FIXME: oi
+
 main.addEventListener("click", (event) => {
   const clickedElement = event.target;
   const clickedElementText = clickedElement.dataset.text;
@@ -77,7 +79,7 @@ const insertOptionElementsIntoDOM = (voices) => {
   }, "");
 };
 
-const setPTBRVoices = voices => {
+const setPTBRVoices = (voices) => {
   const googleVoice = voices.find(
     (voice) => voice.name === "Google português do Brasil"
   );
@@ -85,22 +87,22 @@ const setPTBRVoices = voices => {
     (voice) => voice.name === "Microsoft Maria - Portuguese (Brazil)"
   );
 
-  const setUtteranceVoice = voice => {
+  const setUtteranceVoice = (voice) => {
     utterance.voice = voice;
     const voiceOptionElement = selectElement.querySelector(
       `[value="${googleVoice.name}"]`
     );
     voiceOptionElement.selected = true;
-  }
+  };
 
   setUtteranceVoice(googleVoice ? googleVoice : microsoftVoice);
-}
+};
 
 let voices = [];
 speechSynthesis.addEventListener("voiceschanged", () => {
   voices = speechSynthesis.getVoices();
-  insertOptionElementsIntoDOM(voices)
-  setPTBRVoices(voices)
+  insertOptionElementsIntoDOM(voices);
+  setPTBRVoices(voices);
 });
 
 buttonInsertTect.addEventListener("click", () =>
